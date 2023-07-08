@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pyapp
+spec:
+  selector:
+    matchLabels:
+      app: pyapp
+  template:
+    metadata:
+      labels:
+        app: pyapp
+    spec:
+      containers:
+      - name: pyapp
+        image: prasstam/flaskapp:260523
+        env:
+          - name: FLASK_APP
+            value: app.py
+        ports:
+        - containerPort: 5000
